@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, } from '@angular/core';
 
 @Component({
   selector: 'app-grafico-dona',
@@ -15,5 +15,4 @@ export class GraficoDonaComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
