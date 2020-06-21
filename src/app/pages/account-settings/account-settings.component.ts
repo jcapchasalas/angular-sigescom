@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject, ElementRef } from '@angular/core';
-
 import { SettingsService } from 'src/app/services/service.index';
 
 @Component({
@@ -16,14 +15,13 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   cambiarColor( tema: string, link: any){
-    //console.log( link );
-
+    // console.log( link );
     this.aplicarCheck( link );
     this._ajustes.aplicarTema( tema );
 
   }
 
-  aplicarCheck(link: any ){
+  aplicarCheck(link: any ) {
 
     let selectores: any = document.getElementsByClassName(' selector ');
     for ( let ref of selectores ) {
@@ -34,13 +32,13 @@ export class AccountSettingsComponent implements OnInit {
 
   }
 
-  colocarCheck(){
+  colocarCheck() {
     let selectores: any = document.getElementsByClassName(' selector ');
 
     let tema = this._ajustes.ajustes.tema;
 
     for ( let ref of selectores ) {
-      if ( ref.getAttribute('data-theme' ) == tema ){
+      if ( ref.getAttribute('data-theme' ) === tema ) {
         ref.classList.add('working');
         break;
       }

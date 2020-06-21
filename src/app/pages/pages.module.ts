@@ -1,20 +1,22 @@
-import { NgModule } from "@angular/core";
-import { PAGES_ROUTES } from './pages.routes';
-
-import { SharedModule } from '../shared/shared.module';
-
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-//NG2 - CHARTS
+// RUTAS
+import { PAGES_ROUTES } from './pages.routes';
+
+// MODULO IMPORTADOS
+import { SharedModule } from '../shared/shared.module';
+
+// NG2 - CHARTS
 import { ChartsModule } from 'ng2-charts';
 
+// COMPONENTES
 import { PagesComponent } from './pages.component';
-
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 
-//temporal
+// COMPONENTES TEMPORAL
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -31,7 +33,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficoDonaComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent        
+        RxjsComponent
     ],
 
     exports: [
@@ -48,4 +50,4 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     ],
 })
 
-export class PagesModule{}
+export class PagesModule { }

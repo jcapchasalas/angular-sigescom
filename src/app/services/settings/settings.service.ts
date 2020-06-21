@@ -7,34 +7,35 @@ import { DOCUMENT } from '@angular/common';
 export class SettingsService {
 
   ajustes: Ajustes = {
-    temaURL:'assets/css/colors/default.css',
+    temaURL: 'assets/css/colors/default.css',
     tema: 'default',
-  }
+  };
 
 
-  constructor( @Inject(DOCUMENT) private _document ) { 
+  constructor( @Inject(DOCUMENT) private _document ) {
     this.cargarAjustes();
   }
 
-  guardarAjustes(){
-    ///console.log('Guardando en el localStorage');
-    localStorage.setItem('ajustes', JSON.stringify( this.ajustes ))
+  guardarAjustes() {
+    // console.log('Guardando en el localStorage');
+    localStorage.setItem('ajustes', JSON.stringify( this.ajustes ));
   }
 
   cargarAjustes(){
-    if( localStorage.getItem( 'ajustes' ) ){
+    if ( localStorage.getItem( 'ajustes' ) ){
       this.ajustes = JSON.parse(localStorage.getItem('ajustes'));
-      //console.log('Cargando del localStorage');
+      // console.log('Cargando del localStorage');
 
       this.aplicarTema( this.ajustes.tema );
     }
-    else{
-      //console.log('Usando valores por defecto');
+    else {
+      // Valores por defecto del tema "default"
+      // console.log('Usando valores por defecto');
       this.aplicarTema( this.ajustes.tema );
     }
   }
 
-  aplicarTema(tema: string){
+  aplicarTema(tema: string) {
 
     let url = `assets/css/colors/${tema}.css`;
     this._document.getElementById('tema').setAttribute('href', url);
@@ -47,7 +48,7 @@ export class SettingsService {
 
 }
 
-interface Ajustes{
+interface Ajustes {
   temaURL: string;
   tema: string;
 }
