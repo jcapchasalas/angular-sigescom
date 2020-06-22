@@ -41,6 +41,16 @@ export class UsuarioService {
 
   }
 
+  guardarStorage( id: string, token: string, usuario: Usuario ) {
+
+    localStorage.setItem('id', id );
+    localStorage.setItem('token', token );
+    localStorage.setItem('usuario', JSON.stringify(usuario) );
+
+    this.usuario = usuario;
+    this.token = token;
+  }
+
   logout() {
     this.usuario = null;
     this.token = '';
@@ -93,6 +103,35 @@ export class UsuarioService {
 
             return resp.usuario;
           })
+    );
+
+  }
+
+  actualizarUsuario(usuario: Usuario) {
+
+    let url = URL_SERVICIOS +  '/usuario/' + usuario._id;
+    url += '?token=' + this.token;
+
+    console.log(url);
+
+    return this.http.put( url, usuario )
+    .pipe(
+      map( ( resp: any ) => {
+
+        let usuarioDB: Usuario = resp.usuario;
+
+        this.guardarStorage( usuarioDB._id, this.token, usuarioDB );
+
+        Swal.fire({
+          title: 'Usuario actulizado correctamente',
+          text: usuario.email,
+          icon: 'success'
+        });
+
+        return true;
+
+      })
+
     );
 
   }
